@@ -1,0 +1,166 @@
+openapi: 3.0.0
+# Added by API Auto Mocking Plugin
+servers:
+  - description: Dev Environment
+    url: https://search.carecoordination.velys.docvisor.dev
+info:
+  description: Velys Patient Search API
+  version: "1.0.0-alpha1"
+  title: Velys Patient Search API
+  x-logo:
+    url: https://docspera.com/assets/D3/pic/Logo-Full-White-Padded.png
+    backgroundColor: "#0096FA"
+    href: https://docspera.com
+  contact:
+    email: luca@docspera.com
+  license:
+    name: Proprietary
+tags:
+  - name: authenticated
+    x-displayName: "Authenticated Velys Okta Session"
+    description: |
+      apis available to an authenticated Velys Okta session
+paths:
+  /api/events:
+    get:
+      security:
+        - BearerAuth: [ ]
+      tags:
+        - authenticated
+      summary: Patient search
+      description: Seach for patients in DocSpera by name, mrn, or case name
+      operationId: createSubscription
+      parameters:
+        - in: query
+          name: q
+          schema:
+            type: string
+          required: true
+          description: User query to search by
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              example:
+                - event:
+                    event_id: 2275351
+                    event_type: Surgery
+                    bpci_id: 0
+                    active: 0
+                    thread_id: 0
+                    calendar: 2105
+                    target: 2105
+                    case: Test
+                    details: null
+                    notes: null
+                    setup: null
+                    mrn: RP212312312
+                    time:
+                      start: 20211012181500
+                      end: 20211012191500
+                    billing: null
+                    location:
+                      practice_id: 0
+                      practice: null
+                      address: null
+                      building: null
+                      room: null
+                      status: null
+                    attendees:
+                      providers:
+                        - id: 2105
+                          name: Luca Physician4
+                          status: Approved
+                          type: 1
+                          sub: 11
+                          specialty: Orthopaedic Surgery
+                          avatar: '1'
+                      bpci: [ ]
+                      reps: [ ]
+                    attendee_practice_ids:
+                      - 76836
+                      - 0
+                    post_op:
+                      ivf: null
+                      ebl: null
+                      uop: null
+                      dictated: null
+                      dictation_code: null
+                      notes: null
+                    codes:
+                      icd: [ ]
+                      icd9: [ ]
+                      cpt: [ ]
+                    patient:
+                      patient_id: 16435
+                      name: Luca Patient
+                      mr: RP212312312
+                      dob: 20160505000000
+                      status: Tentative
+                      phone: '9734137724'
+                      insurance:
+                        type: '0'
+                        policy: '0'
+                        group: '0'
+                        provider: '0'
+                        auth: ''
+                        co_pay: '0'
+                        deductible: '0'
+                      demographics:
+                        gender: '0'
+                        height: 0
+                        weight: 0
+                        ethnicity: null
+                      supplemental:
+                        email: luca@docspera.com
+                        ssn: null
+                        home:
+                          line_1: 10 Wootton Road
+                          line_2: null
+                          line_3: null
+                          line_4: null
+                          city:
+                            - Essex Fells
+                          state: NJ
+                          zip: '07021'
+                          country: USA
+                        emergency: [ ]
+                        medical:
+                          diabetic: '0'
+                          hiv: null
+                          conditions:
+                            allergies:
+                              latex: null
+                              other: null
+                            anesthesia:
+                              type: null
+                              other: null
+                              redhead: null
+                            comorbidities:
+                              status: N/A
+                              details: ''
+                        notes: null
+                      bpci_id: 0
+                      estimated_discharge: '0'
+                      discharged: '0'
+                    equipment:
+                      devices: [ ]
+                      supplemental:
+                        orientation: null
+                        size: null
+                  highlights:
+                    - field: patient_mrn
+                      value:
+                        - <em>RP212312312</em>
+        '401':
+          description: Unauthenticated
+        '403':
+          description: Forbidden
+components:
+  securitySchemes:
+    BearerAuth:
+      description: Okta JWT bearer token
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
