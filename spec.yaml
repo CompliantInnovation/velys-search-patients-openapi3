@@ -95,6 +95,8 @@ paths:
                     patient:
                       patient_id: 16435
                       name: Luca Patient
+                      first_name: Luca
+                      last_name: Patient
                       mr: RP212312312
                       dob: 20160505000000
                       status: Tentative
@@ -149,6 +151,12 @@ paths:
                       supplemental:
                         orientation: null
                         size: null
+                    procedure_metadata:
+                      joint_type: "hip"
+                      procedure_type: "arthroplasty"
+                      orientation: "left"
+                      laterality: "unilateral"
+                      snomed_code: "770606008"
                   highlights:
                     - field: patient_mrn
                       value:
