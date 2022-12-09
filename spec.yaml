@@ -53,6 +53,7 @@ paths:
                     target: 2105
                     case: Test
                     details: null
+                    draft: false
                     notes: null
                     setup: null
                     mrn: RP212312312
