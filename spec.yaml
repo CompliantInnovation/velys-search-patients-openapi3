@@ -78,7 +78,14 @@ paths:
                           specialty: Orthopaedic Surgery
                           avatar: '1'
                       bpci: [ ]
-                      reps: [ ]
+                      reps: 
+                        - id: 2102
+                          name: Luca Rep
+                          status: Approved
+                          type: 1
+                          sub: 11
+                          specialty: Orthopaedic Surgery
+                          avatar: '1'
                     attendee_practice_ids:
                       - 76836
                       - 0
